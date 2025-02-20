@@ -1,0 +1,27 @@
+{
+    "visitors": [
+        {
+            "name": "sharifjon",
+            "role": "Mehmon"
+        }
+    ],
+    "atraksions": [
+        {
+            "name": "uragan",
+            "info": "kattala uchun adniralin bag'shlash uchun atraksion"
+        }
+    ],
+    "shops": [
+        {
+            "name": "market",
+            "info": "oziq ovqat do'koni"
+        }
+    ],
+    "parking": [
+        {
+            "car_number": "50|081YAA",
+            "hours": 5
+        }
+    ],
+    "hotel": []
+}
