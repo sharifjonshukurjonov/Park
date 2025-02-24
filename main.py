@@ -3,33 +3,31 @@ import json
 
 
 class Park:
-    def __init__(self, name, information):
-        self.name = name
-        self. information = information
+    def __init__(self):
+        self.atraksions = []
+        self.shops = []
+        self.parking_cars = []
         self.visitors_count = 0
 
 
-class Atraksion:
-    def __init__(self):
-        self.info = []
-
+class Atraksion(Park):
     def add_atraksion(self, name, information):
         atraksion = {
             "Name": name,
             "Information": information,
             "Id": uuid.uuid4()
         }
-        self.info.append(atraksion)
+        self.atraksion.append(atraksion)
 
     def remove_atraksion(self, atraksion_id):
-        for atraksion in self.info:
+        for atraksion in self.atraksion:
             if atraksion["Id"] == atraksion_id:
-                self.info.remove(atraksion)
+                self.atraksion.remove(atraksion)
                 return f"{atraksion_id} ID raqamli atraksion o'chirildi!"
         return f"{atraksion_id} ID raqamli atraksion topilmadi!"
 
     def get_id(self, name):
-        for atraksion in self.info:
+        for atraksion in self.atraksion:
             if atraksion["Name"] == name:
                 return atraksion["Id"]
         return None
@@ -46,9 +44,7 @@ class Atraksion:
 # print(a.info_atraksions())
 
 
-class Shops:
-    def __init__(self):
-        self.info = []
+class Shops(Park):
 
     def add_shop(self, name, information):
         shop = {
@@ -56,23 +52,23 @@ class Shops:
             "Information": information,
             "Id": uuid.uuid4()
         }
-        self.info.append(shop)
+        self.shops.append(shop)
 
     def remove_shop(self, shop_id):
-        for shop in self.info:
+        for shop in self.shops:
             if shop["Id"] == shop_id:
-                self.info.remove(shop)
+                self.shops.remove(shop)
                 return f"{shop_id} ID raqamli do‘kon o‘chirildi!"
         return f"{shop_id} ID raqamli do‘kon topilmadi!"
 
     def get_id(self, name):
-        for shop in self.info:
+        for shop in self.shops:
             if shop["Name"] == name:
                 return shop["Id"]
         return f"{name} isimli do'kon topilmadi!"
 
     def info_shops(self):
-        return self.info
+        return self.shops
 
 # m = Shops()
 # m.add_shop("Supermarket", "Katta oziq-ovqat do‘koni")
@@ -80,11 +76,10 @@ class Shops:
 # print(m.info_shops())
 
 
-class Parking:
+class Parking(Park):
     def __init__(self, num_station, num_car):
         self.num_station = num_station
         self.num_car = num_car
-        self.car = []
         self.pay_for_hour = 1000
         self.playce = [
             "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10",
@@ -102,15 +97,15 @@ class Parking:
                     "Hours": hours,
                     "Total price": total_price
                 }
-                self.car.append(car)
+                self.parking_cars.append(car)
                 return f"Mashina {num_car} joylashdi {num}-joyga. To‘lov: {total_price} so‘m"
         return "Bo‘sh joy yo‘q!"
 
     def pay_for_car(self, num_car):
-        for car in self.car:
+        for car in self.parking_cars:
             if car["Car nomer"] == num_car:
                 total_price = car["Total price"]
-                self.car.remove(car)
+                self.parking_cars.remove(car)
                 return f"Mashina {num_car} parkovkadan chiqdi. To‘lov: {total_price} so‘m"
         return "Mashina topilmadi!"
 
@@ -121,7 +116,8 @@ class Parking:
 
 class Visitors(Park):
     def __init__(self, name, information):
-        super().__init__(name, information)
+        self.name = name
+        self.information = information
         self.onehour = 5000
 
     def enter_park(self):

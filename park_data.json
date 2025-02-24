@@ -3,12 +3,20 @@
         {
             "name": "sharifjon",
             "role": "Mehmon"
+        },
+        {
+            "name": "men",
+            "role": "Mehmon"
         }
     ],
     "atraksions": [
         {
             "name": "uragan",
             "info": "kattala uchun adniralin bag'shlash uchun atraksion"
+        },
+        {
+            "name": "ol",
+            "info": "olma korinishidagi atraksion"
         }
     ],
     "shops": [
